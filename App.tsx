@@ -44,43 +44,43 @@ export default function App() {
   };
 
   return (
-    <View style={[estilos.container, { backgroundColor: t.fundo }]}>
-      <ScrollView contentContainerStyle={estilos.scroll}>
+    <View style={[style.container, { backgroundColor: t.fundo }]}>
+      <ScrollView contentContainerStyle={styles.scroll}>
         
         {/* Header */}
-        <View style={[estilos.card, { backgroundColor: t.card, borderColor: t.borda }]}>
-          <Text style={[estilos.titulo, { color: t.texto }]}>Seminário Individual</Text>
-          <Text style={[estilos.subtitulo, { color: t.subtexto }]}>
+        <View style={[styles.card, { backgroundColor: t.card, borderColor: t.borda }]}>
+          <Text style={[styles.titulo, { color: t.texto }]}>Seminário Individual</Text>
+          <Text style={[styles.subtitulo, { color: t.subtexto }]}>
             Responsividade e Temas em React Native 
           </Text>
 
           {/*Button pra alterar o tema */}
           <Pressable 
             style={({ pressed }) => [
-              estilos.botao, 
+              styles.botao, 
               { backgroundColor: t.primaria, opacity: pressed ? 0.7 : 1 }
             ]} 
             onPress={alternarTema}
           >
-            <Text style={estilos.textoBotao}>
+            <Text style={styles.textoBotao}>
               Mudar Tema (Atual: {temaAtualKey.toUpperCase()})
             </Text>
           </Pressable>
         </View>
 
         {/* Cards pra metricas e breakpoint */}
-        <View style={[estilos.card, { backgroundColor: t.card, borderColor: t.borda }]}>
-          <Text style={[estilos.secaoTitulo, { color: t.texto }]}>Métricas Atuais</Text>
+        <View style={[styles.card, { backgroundColor: t.card, borderColor: t.borda }]}>
+          <Text style={[styles.secaoTitulo, { color: t.texto }]}>Métricas Atuais</Text>
           
-          <Text style={[estilos.textoInfo, { color: t.subtexto }]}>
+          <Text style={[styles.textoInfo, { color: t.subtexto }]}>
             Largura: <Text style={{ color: t.texto, fontWeight: 'bold' }}>{width.toFixed(0)}px</Text>
           </Text>
           
-          <Text style={[estilos.textoInfo, { color: t.subtexto }]}>
+          <Text style={[styles.textoInfo, { color: t.subtexto }]}>
             Altura: <Text style={{ color: t.texto, fontWeight: 'bold' }}>{height.toFixed(0)}px</Text>
           </Text>
 
-          <Text style={[estilos.textoInfo, { color: t.subtexto }]}>
+          <Text style={[styles.textoInfo, { color: t.subtexto }]}>
             Breakpoint:{' '}
             <Text style={{ color: t.primaria, fontWeight: 'bold' }}>
               {ehTelaGrande ? '🖥️ Tela Grande (>= 768px)' : 'Mobile (< 768px)'}
@@ -89,30 +89,30 @@ export default function App() {
         </View>
 
         {/* Grid responsivo */}
-        <Text style={[estilos.secaoTitulo, { color: t.texto, marginTop: 10 }]}>
+        <Text style={[styles.secaoTitulo, { color: t.texto, marginTop: 10 }]}>
           Layout Adaptativo
         </Text>
 
-        <View style={ehTelaGrande ? estilos.linhaGrid : estilos.colunaGrid}>
+        <View style={ehTelaGrande ? styles.linhaGrid : styles.colunaGrid}>
           
           <View style={[
-            estilos.cardGrid, 
+            styles.cardGrid, 
             { backgroundColor: t.card, borderColor: t.borda },
             ehTelaGrande ? { width: '48%' } : { width: '100%' }
           ]}>
-            <Text style={[estilos.cardTitulo, { color: t.primaria }]}>Bloco 01</Text>
-            <Text style={[estilos.textoDescricao, { color: t.subtexto }]}>
+            <Text style={[styles.cardTitulo, { color: t.primaria }]}>Bloco 01</Text>
+            <Text style={[styles.textoDescricao, { color: t.subtexto }]}>
               Demonstração prática da mudança de tamanho de acordo com dispositivo usado.
             </Text>
           </View>
 
           <View style={[
-            estilos.cardGrid, 
+            styles.cardGrid, 
             { backgroundColor: t.card, borderColor: t.borda },
             ehTelaGrande ? { width: '48%' } : { width: '100%' }
           ]}>
-            <Text style={[estilos.cardTitulo, { color: t.primaria }]}>Bloco 02</Text>
-            <Text style={[estilos.textoDescricao, { color: t.subtexto }]}>
+            <Text style={[styles.cardTitulo, { color: t.primaria }]}>Bloco 02</Text>
+            <Text style={[styles.textoDescricao, { color: t.subtexto }]}>
               Feito com componentes modernos.
             </Text>
           </View>
@@ -124,7 +124,7 @@ export default function App() {
   );
 }
 
-const estilos = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
