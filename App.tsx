@@ -44,7 +44,7 @@ export default function App() {
   };
 
   return (
-    <View style={[style.container, { backgroundColor: t.fundo }]}>
+    <View style={[styles.container, { backgroundColor: t.fundo }]}>
       <ScrollView contentContainerStyle={styles.scroll}>
         
         {/* Header */}
