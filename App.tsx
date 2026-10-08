@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Pressable, useWindowDimensions, useColorScheme,} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Pressable, useWindowDimensions, useColorScheme, Image, Appearance } from 'react-native';
 
 // Objeto pra definir as cores de cada tema
 const temas = {
@@ -22,17 +22,18 @@ const temas = {
 };
 
 export default function App() {
-  // Usando o useColor pra ver qual preferência de tema do sistema
-  const esquemaSistema = useColorScheme();
+  // Pegando a preferência de tema do sistema de forma definitiva
+  const esquemaSistema = useColorScheme() || Appearance.getColorScheme();
 
   // Tema manual e tema personalizável
   const [modoManual, setModoManual] = useState<boolean>(false);
   const [temaEscolha, setTemaEscolha] = useState<'light' | 'dark'>('light');
 
-  const temaAtualKey = modoManual ? temaEscolha : (esquemaSistema || 'light');
+  const sistemaSeguro: 'light' | 'dark' = (esquemaSistema === 'dark' ? 'dark' : 'light');
+  const temaAtualKey: 'light' | 'dark' = modoManual ? temaEscolha : sistemaSeguro;
   const t = temas[temaAtualKey];
 
-  // Hook para pegar as dimensões da minha tela
+  // Hook para pegar as dimensões da tela
   const { width, height } = useWindowDimensions();
 
   // Breakpoint pra definir que tipo de dispositivo é
@@ -119,6 +120,24 @@ export default function App() {
 
         </View>
 
+        {/* Imagem Responsiva */}
+        <View style={[styles.card, { backgroundColor: t.card, borderColor: t.borda }]}>
+          <Text style={[styles.secaoTitulo, { color: t.texto }]}>Imagem Responsiva</Text>
+ 
+          <Image 
+            source={{ uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FcSgWqh71FDc%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=59988812eeac48df7270fc358b927ef1b250ef1bd65e9258bc80aa9309e0b64c&ipo=images' }} 
+            style={[
+              styles.imagemResponsiva, 
+              ehTelaGrande && { maxHeight: height * 2 }
+            ]}
+            resizeMode="contain"
+          />
+ 
+          <Text style={[styles.textoDescricao, { color: t.subtexto, marginTop: 8 }]}>
+           A propriedade aspectRatio ajusta a altura proporcionalmente à largura da tela.
+          </Text>
+        </View>
+
       </ScrollView>
     </View>
   );
@@ -189,5 +208,10 @@ const styles = StyleSheet.create({
   textoDescricao: {
     fontSize: 13,
     lineHeight: 18,
+  },
+  imagemResponsiva: {
+    width: '100%',    
+    aspectRatio: 16/9, 
+    borderRadius: 8,  
   },
 });
