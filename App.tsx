@@ -123,7 +123,7 @@ export default function App() {
             <Text style={[styles.secaoTitulo, { color: t.texto }]}>Imagem Responsiva</Text>
   
             <Image 
-              source={{ uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsudoestedigital.com.br%2Fwp-content%2Fuploads%2F2023%2F06%2Furubu-do-pix-1.webp&f=1&nofb=1&ipt=7c3ddd6992ff66b3a496dd7cd0915a95ee3d4cb70bc03b9add99bfbdd92806e5&ipo=images' }} 
+              source={{ uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FcSgWqh71FDc%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=59988812eeac48df7270fc358b927ef1b250ef1bd65e9258bc80aa9309e0b64c&ipo=images' }} 
               style={[
               styles.imagemResponsiva, 
               ehTelaGrande && { height: 500 } ]}
